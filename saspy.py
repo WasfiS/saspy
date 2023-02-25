@@ -11,9 +11,12 @@ from sas7bdat import SAS7BDAT
 with SAS7BDAT('/Users/wasfisamodien/Downloads/pss1718_pu_sas7bdat/pss1718_pu.sas7bdat', skip_header=False) as reader:
     df = reader.to_data_frame()
 
+df = df.rename(columns={'PFNLWT': 'column1'})
+df = df.loc[:,['column1', 'REPW1']]
+
 df.info(verbose=True)
 print(df.head())
 
 with SAS7BDAT('/Users/wasfisamodien/Downloads/pss1718_pu_sas7bdat/pss1718_pu.sas7bdat', skip_header=False) as reader:
-    reader.convert_file('/Users/wasfisamodien/Downloads/pss1718_pu_sas7bdat/pss1718_pu.csv', delimiter=',')
+    reader.convert_file('/Users/wasfisamodien/Downloads/pss1718_pu_sas7bdat/pss1718_pu2.csv', delimiter=',')
 
